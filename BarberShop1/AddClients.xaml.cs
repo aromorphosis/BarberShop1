@@ -131,8 +131,8 @@ namespace BarberShop1
                     {
                         EF.Client addClient = new EF.Client();
                         addClient.FName = tbCLFName.Text;
-                        addClient.FName = tbEmail.Text;
                         addClient.NumPhone = tbCLPhone.Text;
+                        addClient.Email = tbEmail.Text;
                         addClient.Login = tbLCLogin.Text;
                         addClient.Password = tbCLPassword1.Text;
 
@@ -141,8 +141,8 @@ namespace BarberShop1
 
                         MessageBox.Show("Пользователь успешно добавлен.", "Выполнено!", MessageBoxButton.OK, MessageBoxImage.Information);
                         this.Hide();
-                        PersonalWindow personalWindow = new PersonalWindow();
-                        personalWindow.ShowDialog();
+                        Clients clients = new Clients();
+                        clients.ShowDialog();
                         this.Close();
                     }
 
