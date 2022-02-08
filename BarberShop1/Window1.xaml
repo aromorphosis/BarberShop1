@@ -28,7 +28,6 @@
 
             </Button>
             <TextBlock
-                x:Name="Title"
                 Text="Uncle Dwayne's Barber Shop"
                 FontSize="70"
                 Height="150"
