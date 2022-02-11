@@ -38,6 +38,7 @@
                 />
 
             <Button
+                Click="Record_Click"
                 x:Name="Record"
                 Content="Запись на услугу"
                 FontSize="50"
@@ -49,7 +50,8 @@
                 />
             <Button
                 x:Name="Services"
-                Content="Католог услуг"
+                Click="Services_Click"
+                Content="Каталог услуг"
                 FontSize="50"
                 Height="100"
                 Margin="10 40 10 10"  

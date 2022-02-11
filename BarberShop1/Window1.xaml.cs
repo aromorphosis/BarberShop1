@@ -54,5 +54,21 @@ namespace BarberShop1
             clients.ShowDialog();
             this.Close();
         }
+
+        private void Services_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            Services services = new Services();
+            services.ShowDialog();
+            this.Close();
+        }
+
+        private void Record_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            ServicecAdd servicesAdd = new ServicecAdd();
+            servicesAdd.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -85,6 +85,9 @@
     <Compile Include="Adding.xaml.cs">
       <DependentUpon>Adding.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AllRecording.xaml.cs">
+      <DependentUpon>AllRecording.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClassHelper\Class1.cs" />
     <Compile Include="Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
@@ -140,6 +143,12 @@
     <Compile Include="PersonalWindow.xaml.cs">
       <DependentUpon>PersonalWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ServicecAdd.xaml.cs">
+      <DependentUpon>ServicecAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services.xaml.cs">
+      <DependentUpon>Services.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -148,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Adding.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllRecording.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,6 +184,14 @@
       <DependentUpon>RegPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ServicecAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Services.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,6 +254,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\Dwayne-Johnson-Wiki-Biography-Age-Height-Weight-Profile-Info.-Best-HD-Wallpaper-scaled.jpg" />
+    <Resource Include="Images\d2b91248dbec1989e3630c53975ef4a9.jpg" />
+    <Resource Include="Images\7135674e-3fc4-4366-a481-0a89b13fe55e.jpg" />
     <Resource Include="Images\12.jpg" />
     <Resource Include="Images\123.jpg" />
     <Resource Include="Images\659795.jpg" />
