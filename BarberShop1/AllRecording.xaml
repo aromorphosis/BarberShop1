@@ -26,7 +26,6 @@
                 <DataGridTextColumn Header="Дата записи" Width="*" Binding="{Binding DateRecording}"/>
                 <DataGridTextColumn Header="Время записи" Width="*" Binding="{Binding TimeRecording}"/>
                 <DataGridTextColumn Header="Название услуги" Width="*" Binding="{Binding Service.NameService}"/>
-                <DataGridTextColumn Header="Тип услуги" Width="*" Binding="{Binding NameTypeService}"/>
             </DataGrid.Columns>
         </DataGrid>
 
