@@ -20,7 +20,6 @@ namespace BarberShop1
     public partial class AllRecording : Window
     {
         List<EF.Recording> ListRecording = new List<EF.Recording>();
-        List<EF.TypeService> ListRecording1 = new List<EF.TypeService>();
         List<EF.Service> ListRecording2 = new List<EF.Service>();
 
 
@@ -31,7 +30,6 @@ namespace BarberShop1
             "По дате",
             "По времени",
             "По названию услуги",
-            "По типу услуги",
         };
 
         public AllRecording()
@@ -39,7 +37,6 @@ namespace BarberShop1
             InitializeComponent();
             AllPersonal.ItemsSource = ClassHelper.Class1.context.Recording.ToList();
             AllPersonal.ItemsSource = ClassHelper.Class1.context.Service.ToList();
-            AllPersonal.ItemsSource = ClassHelper.Class1.context.TypeService.ToList();
             SearchCBRec.ItemsSource = ListForCBAllRec;
             SearchCBRec.SelectedIndex = 0;
             Filter();
