@@ -98,5 +98,29 @@ namespace BarberShop1
             Filter();
         }
 
+        private void AllPersonal_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete || e.Key == Key.Back)
+            {
+                var resClick = MessageBox.Show($"Удалить запись от {(AllPersonal.SelectedItem as EF.Recording).DateRecording}", "Подтвержение", MessageBoxButton.YesNo, MessageBoxImage.Information);
+
+
+                if (resClick == MessageBoxResult.Yes)
+                {
+                    EF.Recording recording = new EF.Recording();
+                    if (!(AllPersonal.SelectedItem is EF.Recording))
+                    {
+                        MessageBox.Show("Запись не выбраны");
+                        return;
+                    }
+                    recording = AllPersonal.SelectedItem as EF.Recording;
+
+                    ClassHelper.Class1.context.Recording.Remove(recording);
+                    ClassHelper.Class1.context.SaveChanges();
+                }
+            }
+            Filter();
+        }
     }
+    
 }

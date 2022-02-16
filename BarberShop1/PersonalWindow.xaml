@@ -16,6 +16,8 @@
         <Image Source="/Images/dwayne_johnson.jpg" Stretch="Fill" Grid.RowSpan="3"/>
 
         <DataGrid
+            IsReadOnly="True"
+            KeyUp="AllPersonal_KeyUp"
             x:Name="AllPersonal"
             Grid.Row="1"
             Opacity="0.70"
