@@ -107,6 +107,7 @@ namespace BarberShop1
 
                 if (resClick == MessageBoxResult.Yes)
                 {
+                    
                     EF.Recording recording = new EF.Recording();
                     if (!(AllPersonal.SelectedItem is EF.Recording))
                     {

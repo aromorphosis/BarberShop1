@@ -19,6 +19,7 @@ namespace BarberShop1
     /// </summary>
     public partial class ServicecAdd : Window
     {
+
         public ServicecAdd()
         {
             InitializeComponent();
