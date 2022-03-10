@@ -15,23 +15,7 @@
 
         <Image Source="/Images/dwayne_johnson.jpg" Stretch="Fill" Grid.RowSpan="3"/>
 
-        <DataGrid
-            IsReadOnly="True"
-            KeyUp="AllPersonal_KeyUp"
-            x:Name="AllPersonal"
-            Grid.Row="1"
-            Opacity="0.70"
-            AutoGenerateColumns="False"
-            >
-            
-            <DataGrid.Columns >
-                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding FName}"/>
-                <DataGridTextColumn Header="Фамилия" Width="*" Binding="{Binding LName}"/>
-                <DataGridTextColumn Header="Телефон" Width="*" Binding="{Binding Phone}"/>
-                <DataGridTextColumn Header="Логин" Width="*" Binding="{Binding Login}"/>
-                <DataGridTextColumn Header="Пароль" Width="0.5*" Binding="{Binding Password}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+     
 
         <Button
         x:Name="Back"
@@ -53,8 +37,154 @@
             FontSize="30"
             Margin="340 80 20 20"
             Foreground="White"
-
             />
+
+        <ListView x:Name="AllPersonalTwo"
+                    Grid.RowSpan="2"
+                    Grid.Row="1"
+                    KeyUp="AllPersonal_KeyUp"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    BorderBrush="#FFAA9264"
+                    Background="#FF0F0F0F" Foreground="Black">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        BorderBrush="#FFA28A60"
+                        BorderThickness="2"
+                        CornerRadius="10"
+                        Width="800"
+                        Height="100"
+                        Margin="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Grid.Column="0"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="3"
+                                    Width="100"
+                                    Height="100">
+                                <Image.Source>
+                                    <Binding Path="PhotoWorker">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/BarberShop1;component/Images/dwayne_johnson.jpg</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+
+                            <TextBlock Text="Фамилия:"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right"
+                                        Margin="0 0 10 0"
+                                        FontSize="20"
+                                        Foreground="#FFA28A60"/>
+
+                            <TextBlock Text="Имя:"
+                                       Grid.Column="1"
+                                       Grid.Row="1"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"
+                                       Margin="0 0 10 0"
+                                       FontSize="20"
+                                       Foreground="#FFA28A60"/>
+
+                            <TextBlock Text="Телефон:"
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right"
+                                        Margin="0 0 10 0"
+                                        FontSize="20"
+                                        Foreground="#FFA28A60"/>
+
+
+                            <TextBlock Text="{Binding Path = LName}"
+                                        Grid.Column="2"
+                                        Grid.Row="0"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Margin="0 0 10 0"
+                                        FontSize="20"
+                                        Foreground="#FFA28A60"/>
+
+                            <TextBlock Text="{Binding Path = FName}"
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Margin="0 0 10 0"
+                                        FontSize="20"
+                                        Foreground="#FFA28A60"/>
+
+                            <TextBlock Text="{Binding Path = Phone}"
+                                        Grid.Column="2"
+                                        Grid.Row="2"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Margin="0 0 10 0"
+                                        FontSize="20"
+                                        Foreground="#FFA28A60"/>
+
+                            <TextBlock Text="Логин:"
+                                        Grid.Column="3"
+                                        Grid.Row="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right"
+                                        Margin="0 0 10 0"
+                                        FontSize="20"
+                                        Foreground="#FFA28A60"/>
+
+                            <TextBlock Text="Пароль:"
+                                        Grid.Column="3"
+                                        Grid.Row="2"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Right"
+                                        Margin="0 0 10 0"
+                                        FontSize="20"
+                                        Foreground="#FFA28A60"/>
+
+                            <TextBlock Text="{Binding Path = Login}"
+                                        Grid.Column="4"
+                                        Grid.Row="1"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Margin="0 0 10 0"
+                                        FontSize="20"
+                                        Foreground="#FFA28A60"/>
+
+                            <TextBlock Text="{Binding Path = Password}"
+                                        Grid.Column="4"
+                                        Grid.Row="2"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Margin="0 0 10 0"
+                                        FontSize="20"
+                                        Foreground="#FFA28A60"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <TextBox
             x:Name="SearchTB"

@@ -34,7 +34,7 @@ namespace BarberShop1
         public PersonalWindow()
         {
             InitializeComponent();
-            AllPersonal.ItemsSource = context.Worker.ToList();
+            AllPersonalTwo.ItemsSource = context.Worker.ToList();
             SearchCB.ItemsSource = ListForCB;
             SearchCB.SelectedIndex = 0;
             Filter();
@@ -76,7 +76,7 @@ namespace BarberShop1
                 MessageBox.Show("Записи не найдены");
             }
 
-            AllPersonal.ItemsSource = ListWorker;
+            AllPersonalTwo.ItemsSource = ListWorker;
 
         }
 
@@ -112,18 +112,18 @@ namespace BarberShop1
         {
             if (e.Key == Key.Delete || e.Key == Key.Back)
             {
-                var resClick = MessageBox.Show($"Удалить работника {(AllPersonal.SelectedItem as EF.Worker).FName}", "Подтвержение", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                var resClick = MessageBox.Show($"Удалить работника {(AllPersonalTwo.SelectedItem as EF.Worker).FName}", "Подтвержение", MessageBoxButton.YesNo, MessageBoxImage.Information);
 
 
                 if (resClick == MessageBoxResult.Yes)
                 {
                     EF.Worker worker = new EF.Worker();
-                    if (!(AllPersonal.SelectedItem is EF.Worker))
+                    if (!(AllPersonalTwo.SelectedItem is EF.Worker))
                     {
                         MessageBox.Show("Запись не выбраны");
                         return;
                     }
-                    worker = AllPersonal.SelectedItem as EF.Worker;
+                    worker = AllPersonalTwo.SelectedItem as EF.Worker;
 
                     ClassHelper.Class1.context.Worker.Remove(worker);
                     ClassHelper.Class1.context.SaveChanges();
