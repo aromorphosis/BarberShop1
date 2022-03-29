@@ -8,10 +8,13 @@
 Каталог услуг. <br>
 ![image](https://user-images.githubusercontent.com/86304673/160582657-6c38286c-2d12-480c-9cdb-a84b7a85948e.png) <br>
 Окно клиентов. <br>
-![image](https://user-images.githubusercontent.com/86304673/155676804-9703905a-1891-497e-ac71-0d1eba382789.png) <br>
+![image](https://user-images.githubusercontent.com/86304673/160583112-34e0e326-0af9-4f8c-9404-483bd71d9712.png) <br>
 Добавление нового клиента. <br>
 ![image](https://user-images.githubusercontent.com/86304673/155676849-fd8a52c8-31e3-43ce-ae60-e99af27ab600.png) <br>
 Окно персонала. <br>
-![image](https://user-images.githubusercontent.com/86304673/155676936-47d35874-54ae-4d80-a15d-1621c319bc99.png) <br>
+![image](https://user-images.githubusercontent.com/86304673/160583304-2cd0974c-1945-4131-848b-69e671f685e9.png) <br>
 Добавление персонала. <br>
 ![image](https://user-images.githubusercontent.com/86304673/155677600-1307d5b0-7b7d-4fe4-9ee2-c76de17fc55c.png) <br>
+Расчет зарплаты. <br>
+![image](https://user-images.githubusercontent.com/86304673/160583442-0fd48416-e70a-4ed3-968a-567eebcfb177.png) <br>
+
