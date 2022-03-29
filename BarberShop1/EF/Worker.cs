@@ -20,6 +20,7 @@ namespace BarberShop1.EF
         public string Phone { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public byte[] PhotoWorker { get; set; }
     
         public virtual WorkerPost WorkerPost { get; set; }
     }

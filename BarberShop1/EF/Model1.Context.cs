@@ -28,12 +28,10 @@ namespace BarberShop1.EF
         }
     
         public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<ClientRecording> ClientRecording { get; set; }
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<Recording> Recording { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<TypeService> TypeService { get; set; }
         public virtual DbSet<Worker> Worker { get; set; }
         public virtual DbSet<WorkerPost> WorkerPost { get; set; }
     

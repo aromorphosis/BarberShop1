@@ -16,14 +16,6 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="ClientRecording">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdClient" Type="int" Nullable="false" />
-          <Property Name="IdRecording" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="IdPost" />
@@ -36,10 +28,9 @@
             <PropertyRef Name="IdRecording" />
           </Key>
           <Property Name="IdRecording" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DateRecording" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="TimeRecording" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdClient" Type="int" />
           <Property Name="IdService" Type="int" Nullable="false" />
-          <Property Name="IdWorker" Type="int" Nullable="false" />
+          <Property Name="IdWorker" Type="int" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -47,7 +38,7 @@
           </Key>
           <Property Name="IdService" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameService" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdTypeService" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -59,13 +50,6 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="TypeService">
-          <Key>
-            <PropertyRef Name="IDTypeService" />
-          </Key>
-          <Property Name="IDTypeService" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameTypeService" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="Worker">
           <Key>
             <PropertyRef Name="IdWorker" />
@@ -76,6 +60,7 @@
           <Property Name="Phone" Type="nchar" MaxLength="20" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhotoWorker" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="WorkerPost">
           <Key>
@@ -84,27 +69,15 @@
           <Property Name="IdWorker" Type="int" Nullable="false" />
           <Property Name="IdPost" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_ClientRecording_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="1" />
-          <End Role="ClientRecording" Type="Self.ClientRecording" Multiplicity="*" />
+        <Association Name="FK_Recording_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Recording" Type="Self.Recording" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Client">
               <PropertyRef Name="IdClient" />
             </Principal>
-            <Dependent Role="ClientRecording">
+            <Dependent Role="Recording">
               <PropertyRef Name="IdClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClientRecording_Recording">
-          <End Role="Recording" Type="Self.Recording" Multiplicity="1" />
-          <End Role="ClientRecording" Type="Self.ClientRecording" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Recording">
-              <PropertyRef Name="IdRecording" />
-            </Principal>
-            <Dependent Role="ClientRecording">
-              <PropertyRef Name="IdRecording" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -121,7 +94,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Recording_WorkerPost">
-          <End Role="WorkerPost" Type="Self.WorkerPost" Multiplicity="1" />
+          <End Role="WorkerPost" Type="Self.WorkerPost" Multiplicity="0..1" />
           <End Role="Recording" Type="Self.Recording" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WorkerPost">
@@ -129,18 +102,6 @@
             </Principal>
             <Dependent Role="Recording">
               <PropertyRef Name="IdWorker" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Service_TypeService">
-          <End Role="TypeService" Type="Self.TypeService" Multiplicity="1" />
-          <End Role="Service" Type="Self.Service" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeService">
-              <PropertyRef Name="IDTypeService" />
-            </Principal>
-            <Dependent Role="Service">
-              <PropertyRef Name="IdTypeService" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -201,21 +162,15 @@
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище BarberShopModelContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ClientRecording" EntityType="Self.ClientRecording" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recording" EntityType="Self.Recording" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TypeService" EntityType="Self.TypeService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkerPost" EntityType="Self.WorkerPost" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ClientRecording_Client" Association="Self.FK_ClientRecording_Client">
+          <AssociationSet Name="FK_Recording_Client" Association="Self.FK_Recording_Client">
             <End Role="Client" EntitySet="Client" />
-            <End Role="ClientRecording" EntitySet="ClientRecording" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ClientRecording_Recording" Association="Self.FK_ClientRecording_Recording">
             <End Role="Recording" EntitySet="Recording" />
-            <End Role="ClientRecording" EntitySet="ClientRecording" />
           </AssociationSet>
           <AssociationSet Name="FK_Recording_Service" Association="Self.FK_Recording_Service">
             <End Role="Service" EntitySet="Service" />
@@ -224,10 +179,6 @@
           <AssociationSet Name="FK_Recording_WorkerPost" Association="Self.FK_Recording_WorkerPost">
             <End Role="WorkerPost" EntitySet="WorkerPost" />
             <End Role="Recording" EntitySet="Recording" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Service_TypeService" Association="Self.FK_Service_TypeService">
-            <End Role="TypeService" EntitySet="TypeService" />
-            <End Role="Service" EntitySet="Service" />
           </AssociationSet>
           <AssociationSet Name="FK_WorkerPost_Post" Association="Self.FK_WorkerPost_Post">
             <End Role="Post" EntitySet="Post" />
@@ -274,21 +225,15 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="Client" EntityType="BarberShopModel.Client" />
-          <EntitySet Name="ClientRecording" EntityType="BarberShopModel.ClientRecording" />
           <EntitySet Name="Post" EntityType="BarberShopModel.Post" />
           <EntitySet Name="Recording" EntityType="BarberShopModel.Recording" />
           <EntitySet Name="Service" EntityType="BarberShopModel.Service" />
           <EntitySet Name="sysdiagrams" EntityType="BarberShopModel.sysdiagrams" />
-          <EntitySet Name="TypeService" EntityType="BarberShopModel.TypeService" />
           <EntitySet Name="Worker" EntityType="BarberShopModel.Worker" />
           <EntitySet Name="WorkerPost" EntityType="BarberShopModel.WorkerPost" />
-          <AssociationSet Name="FK_ClientRecording_Client" Association="BarberShopModel.FK_ClientRecording_Client">
+          <AssociationSet Name="FK_Recording_Client" Association="BarberShopModel.FK_Recording_Client">
             <End Role="Client" EntitySet="Client" />
-            <End Role="ClientRecording" EntitySet="ClientRecording" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ClientRecording_Recording" Association="BarberShopModel.FK_ClientRecording_Recording">
             <End Role="Recording" EntitySet="Recording" />
-            <End Role="ClientRecording" EntitySet="ClientRecording" />
           </AssociationSet>
           <AssociationSet Name="FK_WorkerPost_Post" Association="BarberShopModel.FK_WorkerPost_Post">
             <End Role="Post" EntitySet="Post" />
@@ -301,10 +246,6 @@
           <AssociationSet Name="FK_Recording_WorkerPost" Association="BarberShopModel.FK_Recording_WorkerPost">
             <End Role="WorkerPost" EntitySet="WorkerPost" />
             <End Role="Recording" EntitySet="Recording" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Service_TypeService" Association="BarberShopModel.FK_Service_TypeService">
-            <End Role="TypeService" EntitySet="TypeService" />
-            <End Role="Service" EntitySet="Service" />
           </AssociationSet>
           <AssociationSet Name="FK_WorkerPost_Worker" Association="BarberShopModel.FK_WorkerPost_Worker">
             <End Role="Worker" EntitySet="Worker" />
@@ -332,17 +273,7 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ClientRecording" Relationship="BarberShopModel.FK_ClientRecording_Client" FromRole="Client" ToRole="ClientRecording" />
-        </EntityType>
-        <EntityType Name="ClientRecording">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdClient" Type="Int32" Nullable="false" />
-          <Property Name="IdRecording" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Client" Relationship="BarberShopModel.FK_ClientRecording_Client" FromRole="ClientRecording" ToRole="Client" />
-          <NavigationProperty Name="Recording" Relationship="BarberShopModel.FK_ClientRecording_Recording" FromRole="ClientRecording" ToRole="Recording" />
+          <NavigationProperty Name="Recording" Relationship="BarberShopModel.FK_Recording_Client" FromRole="Client" ToRole="Recording" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -357,11 +288,10 @@
             <PropertyRef Name="IdRecording" />
           </Key>
           <Property Name="IdRecording" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateRecording" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TimeRecording" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdClient" Type="Int32" />
           <Property Name="IdService" Type="Int32" Nullable="false" />
-          <Property Name="IdWorker" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ClientRecording" Relationship="BarberShopModel.FK_ClientRecording_Recording" FromRole="Recording" ToRole="ClientRecording" />
+          <Property Name="IdWorker" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="BarberShopModel.FK_Recording_Client" FromRole="Recording" ToRole="Client" />
           <NavigationProperty Name="Service" Relationship="BarberShopModel.FK_Recording_Service" FromRole="Recording" ToRole="Service" />
           <NavigationProperty Name="WorkerPost" Relationship="BarberShopModel.FK_Recording_WorkerPost" FromRole="Recording" ToRole="WorkerPost" />
         </EntityType>
@@ -371,9 +301,8 @@
           </Key>
           <Property Name="IdService" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameService" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdTypeService" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" />
           <NavigationProperty Name="Recording" Relationship="BarberShopModel.FK_Recording_Service" FromRole="Service" ToRole="Recording" />
-          <NavigationProperty Name="TypeService" Relationship="BarberShopModel.FK_Service_TypeService" FromRole="Service" ToRole="TypeService" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -385,14 +314,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="TypeService">
-          <Key>
-            <PropertyRef Name="IDTypeService" />
-          </Key>
-          <Property Name="IDTypeService" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameTypeService" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Service" Relationship="BarberShopModel.FK_Service_TypeService" FromRole="TypeService" ToRole="Service" />
-        </EntityType>
         <EntityType Name="Worker">
           <Key>
             <PropertyRef Name="IdWorker" />
@@ -403,6 +324,7 @@
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoWorker" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="WorkerPost" Relationship="BarberShopModel.FK_WorkerPost_Worker" FromRole="Worker" ToRole="WorkerPost" />
         </EntityType>
         <EntityType Name="WorkerPost">
@@ -415,27 +337,15 @@
           <NavigationProperty Name="Recording" Relationship="BarberShopModel.FK_Recording_WorkerPost" FromRole="WorkerPost" ToRole="Recording" />
           <NavigationProperty Name="Worker" Relationship="BarberShopModel.FK_WorkerPost_Worker" FromRole="WorkerPost" ToRole="Worker" />
         </EntityType>
-        <Association Name="FK_ClientRecording_Client">
-          <End Type="BarberShopModel.Client" Role="Client" Multiplicity="1" />
-          <End Type="BarberShopModel.ClientRecording" Role="ClientRecording" Multiplicity="*" />
+        <Association Name="FK_Recording_Client">
+          <End Type="BarberShopModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="BarberShopModel.Recording" Role="Recording" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Client">
               <PropertyRef Name="IdClient" />
             </Principal>
-            <Dependent Role="ClientRecording">
+            <Dependent Role="Recording">
               <PropertyRef Name="IdClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClientRecording_Recording">
-          <End Type="BarberShopModel.Recording" Role="Recording" Multiplicity="1" />
-          <End Type="BarberShopModel.ClientRecording" Role="ClientRecording" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Recording">
-              <PropertyRef Name="IdRecording" />
-            </Principal>
-            <Dependent Role="ClientRecording">
-              <PropertyRef Name="IdRecording" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -464,7 +374,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Recording_WorkerPost">
-          <End Type="BarberShopModel.WorkerPost" Role="WorkerPost" Multiplicity="1" />
+          <End Type="BarberShopModel.WorkerPost" Role="WorkerPost" Multiplicity="0..1" />
           <End Type="BarberShopModel.Recording" Role="Recording" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WorkerPost">
@@ -472,18 +382,6 @@
             </Principal>
             <Dependent Role="Recording">
               <PropertyRef Name="IdWorker" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Service_TypeService">
-          <End Type="BarberShopModel.TypeService" Role="TypeService" Multiplicity="1" />
-          <End Type="BarberShopModel.Service" Role="Service" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeService">
-              <PropertyRef Name="IDTypeService" />
-            </Principal>
-            <Dependent Role="Service">
-              <PropertyRef Name="IdTypeService" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -541,15 +439,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ClientRecording">
-            <EntityTypeMapping TypeName="BarberShopModel.ClientRecording">
-              <MappingFragment StoreEntitySet="ClientRecording">
-                <ScalarProperty Name="IdRecording" ColumnName="IdRecording" />
-                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="BarberShopModel.Post">
               <MappingFragment StoreEntitySet="Post">
@@ -563,8 +452,7 @@
               <MappingFragment StoreEntitySet="Recording">
                 <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
                 <ScalarProperty Name="IdService" ColumnName="IdService" />
-                <ScalarProperty Name="TimeRecording" ColumnName="TimeRecording" />
-                <ScalarProperty Name="DateRecording" ColumnName="DateRecording" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
                 <ScalarProperty Name="IdRecording" ColumnName="IdRecording" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -572,7 +460,7 @@
           <EntitySetMapping Name="Service">
             <EntityTypeMapping TypeName="BarberShopModel.Service">
               <MappingFragment StoreEntitySet="Service">
-                <ScalarProperty Name="IdTypeService" ColumnName="IdTypeService" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="NameService" ColumnName="NameService" />
                 <ScalarProperty Name="IdService" ColumnName="IdService" />
               </MappingFragment>
@@ -589,17 +477,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TypeService">
-            <EntityTypeMapping TypeName="BarberShopModel.TypeService">
-              <MappingFragment StoreEntitySet="TypeService">
-                <ScalarProperty Name="NameTypeService" ColumnName="NameTypeService" />
-                <ScalarProperty Name="IDTypeService" ColumnName="IDTypeService" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Worker">
             <EntityTypeMapping TypeName="BarberShopModel.Worker">
               <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="PhotoWorker" ColumnName="PhotoWorker" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />

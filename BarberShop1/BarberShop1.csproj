@@ -85,17 +85,11 @@
     <Compile Include="Adding.xaml.cs">
       <DependentUpon>Adding.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AllRecording.xaml.cs">
-      <DependentUpon>AllRecording.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ClassHelper\Class1.cs" />
     <Compile Include="Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
     </Compile>
     <Compile Include="EF\Client.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF\ClientRecording.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="EF\Model1.Context.cs">
@@ -131,9 +125,6 @@
     <Compile Include="EF\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\TypeService.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="EF\Worker.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -152,15 +143,14 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Zarplata.xaml.cs">
+      <DependentUpon>Zarplata.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddClients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Adding.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AllRecording.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Zarplata.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,6 +248,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\kisspng-computer-icons-user-clip-art-portable-network-grap-rse-ampquotetc-cec-rkampquot-5bed73aa1f3005.4247395715422882981278.jpg" />
     <Resource Include="Images\Dwayne-Johnson-Wiki-Biography-Age-Height-Weight-Profile-Info.-Best-HD-Wallpaper-scaled.jpg" />
     <Resource Include="Images\d2b91248dbec1989e3630c53975ef4a9.jpg" />
     <Resource Include="Images\7135674e-3fc4-4366-a481-0a89b13fe55e.jpg" />

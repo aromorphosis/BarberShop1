@@ -33,7 +33,7 @@ namespace BarberShop1
         public Clients()
         {
             InitializeComponent();
-            AllPersonal.ItemsSource = ClassHelper.Class1.context.Client.ToList();
+            AllPersonalThree.ItemsSource = ClassHelper.Class1.context.Client.ToList();
             SearchCBCL.ItemsSource = ListForCBCL;
             SearchCBCL.SelectedIndex = 0;
             Filter();
@@ -75,7 +75,7 @@ namespace BarberShop1
                 MessageBox.Show("Записи не найдены");
             }
 
-            AllPersonal.ItemsSource = ListClient;
+            AllPersonalThree.ItemsSource = ListClient;
 
         }
 
@@ -111,18 +111,18 @@ namespace BarberShop1
         {
             if (e.Key == Key.Delete || e.Key == Key.Back)
             {
-                var resClick = MessageBox.Show($"Удалить пользователя {(AllPersonal.SelectedItem as EF.Client).FName}", "Подтвержение", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                var resClick = MessageBox.Show($"Удалить пользователя {(AllPersonalThree.SelectedItem as EF.Client).FName}", "Подтвержение", MessageBoxButton.YesNo, MessageBoxImage.Information);
 
 
                 if (resClick == MessageBoxResult.Yes)
                 {
                     EF.Client client = new EF.Client();
-                    if (!(AllPersonal.SelectedItem is EF.Client))
+                    if (!(AllPersonalThree.SelectedItem is EF.Client))
                     {
                         MessageBox.Show("Запись не выбраны");
                         return;
                     }
-                    client = AllPersonal.SelectedItem as EF.Client;
+                    client = AllPersonalThree.SelectedItem as EF.Client;
 
                     ClassHelper.Class1.context.Client.Remove(client);
                     ClassHelper.Class1.context.SaveChanges();

@@ -14,20 +14,12 @@ namespace BarberShop1.EF
     
     public partial class Recording
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Recording()
-        {
-            this.ClientRecording = new HashSet<ClientRecording>();
-        }
-    
         public int IdRecording { get; set; }
-        public string DateRecording { get; set; }
-        public string TimeRecording { get; set; }
+        public Nullable<int> IdClient { get; set; }
         public int IdService { get; set; }
-        public int IdWorker { get; set; }
+        public Nullable<int> IdWorker { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientRecording> ClientRecording { get; set; }
+        public virtual Client Client { get; set; }
         public virtual Service Service { get; set; }
         public virtual WorkerPost WorkerPost { get; set; }
     }

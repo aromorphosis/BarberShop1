@@ -9,32 +9,18 @@
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Image Source="Images/ScalaLogo.png" Stretch="Fill" />
-        
+
         <StackPanel>
 
-            <Button
-                x:Name="Close"
-                Height="35"
-                Width="35"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Right"
-                Margin="20"
-                Content="x"
-                FontSize="27"
-                Background="Red"
-                Click="Close_Click"
-                
-                >
-
-            </Button>
             <TextBlock
                 Text="Uncle Dwayne's Barber Shop"
-                FontSize="70"
+                FontSize="60"
                 Height="150"
                 TextAlignment="Center"
                 VerticalAlignment="Center" 
                 FontFamily="Castellar"
                 Foreground="White"
+                Margin="10,10,9.6,-50"
                 />
 
             <Button
@@ -43,7 +29,7 @@
                 Content="Запись на услугу"
                 FontSize="50"
                 Height="100"
-                Margin="10 -40 10 10"  
+                Margin="10 -30 10 10"  
                 BorderBrush="{x:Null}"
                 Background="{x:Null}"
                 Foreground="White"
@@ -54,7 +40,7 @@
                 Content="Каталог услуг"
                 FontSize="50"
                 Height="100"
-                Margin="10 40 10 10"  
+                Margin="10 10 10 10"  
                 BorderBrush="{x:Null}" 
                 Background="{x:Null}" 
                 Foreground="White"
@@ -80,6 +66,18 @@
                 Background="{x:Null}" 
                 Foreground="White"
                 Click="Personal_Click"
+                />
+
+            <Button
+                x:Name="Zarplata"
+                Click="Zarplata_Click"
+                Content="Зарплата"
+                FontSize="50"
+                Height="100"
+                Margin="10 40 10 10"  
+                BorderBrush="{x:Null}" 
+                Background="{x:Null}" 
+                Foreground="White"
                 />
 
             <Button

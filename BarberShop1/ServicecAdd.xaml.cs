@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static BarberShop1.ClassHelper.Class1;
+
 
 namespace BarberShop1
 {
@@ -23,10 +25,17 @@ namespace BarberShop1
         public ServicecAdd()
         {
             InitializeComponent();
-        }
+            cbClients.ItemsSource = context.Client.ToList();
+            cbClients.DisplayMemberPath = "FName";
+            cbClients.SelectedIndex = 0;
 
-        private void btnAddServ_Click(object sender, RoutedEventArgs e)
-        {
+            cbWorker.ItemsSource = context.Worker.ToList();
+            cbWorker.DisplayMemberPath = "FName";
+            cbWorker.SelectedIndex = 0;
+
+            cbServices.ItemsSource = context.Service.ToList();
+            cbServices.DisplayMemberPath = "NameService";
+            cbServices.SelectedIndex = 0;
 
         }
 
@@ -38,27 +47,25 @@ namespace BarberShop1
             this.Close();
         }
 
-        private void tbDateServ_TextChanged(object sender, TextChangedEventArgs e)
+        private void btnAddServ_Click(object sender, RoutedEventArgs e)
         {
+            var resClick = MessageBox.Show("Добавить запись на услугу?", "Подтверждение.", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (resClick == MessageBoxResult.Yes)
+            {
+                EF.Recording addRecording = new EF.Recording();
+                addRecording.IdClient  = cbClients.SelectedIndex + 1;
+                addRecording.IdWorker = cbWorker.SelectedIndex + 1;
+                addRecording.IdService = cbServices.SelectedIndex + 1;
 
-        }
+                ClassHelper.Class1.context.Recording.Add(addRecording);
+                ClassHelper.Class1.context.SaveChanges();
 
-        private void tbTimeServ_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void cbServicec_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void btnAllRecording_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            AllRecording allRecording = new AllRecording();
-            allRecording.ShowDialog();
-            this.Close();
+                MessageBox.Show("Запись успешно добавлен.", "Выполнено!", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Hide();
+                ServicecAdd servicecAdd = new ServicecAdd();
+                servicecAdd.ShowDialog();
+                this.Close();
+            }
         }
     }
 }

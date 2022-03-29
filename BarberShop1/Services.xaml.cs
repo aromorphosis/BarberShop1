@@ -21,12 +21,12 @@ namespace BarberShop1
     public partial class Services : Window
     {
         List<EF.Service> ListService = new List<EF.Service>();
-        List<EF.TypeService> ListService1 = new List<EF.TypeService>();
 
         List<string> ListForCBSer = new List<string>()
         {
             "По умолчанию",
-            "По типу услуги",
+            "По названию услуги",
+            "По цене",
         };
 
         public Services()
@@ -41,9 +41,8 @@ namespace BarberShop1
         private void Filter()
         {
             ListService = ClassHelper.Class1.context.Service.ToList();
-            ListService = ListService.
-            Where(i => i.NameService.Contains(SearchTBSer.Text)
-            || i.TypeService.NameTypeService.Contains(SearchTBSer.Text)).ToList();
+            ListService = ListService.Where(i => i.NameService.Contains(SearchTBSer.Text)
+            || i.Cost == Convert.ToDecimal(SearchTBSer.Text)).ToList();
 
             switch (SearchCBSer.SelectedIndex)
             {
@@ -56,7 +55,7 @@ namespace BarberShop1
                     break;
 
                 case 2:
-                    ListService = ListService.OrderBy(i => i.IdTypeService).ToList();
+                    ListService = ListService.OrderBy(i => i.Cost).ToList();
                     break;
 
                 default:

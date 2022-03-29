@@ -22,10 +22,9 @@ namespace BarberShop1.EF
     
         public int IdService { get; set; }
         public string NameService { get; set; }
-        public int IdTypeService { get; set; }
+        public Nullable<decimal> Cost { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recording> Recording { get; set; }
-        public virtual TypeService TypeService { get; set; }
     }
 }

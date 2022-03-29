@@ -25,49 +25,32 @@
                Grid.ColumnSpan="2"
                Grid.RowSpan="9"/>
 
-        <TextBlock Text="Запись на услугу"
+        <TextBlock Text="Запись клиента на услугу"
                    FontSize="30"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Foreground="White"
                    Grid.ColumnSpan="2"/>
 
-
-        <TextBlock Text="Выберите дату:"
-                   FontSize="25"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Grid.Row="1"
-                   Foreground="White"
-                   Margin="20 0"/>
-
-        <TextBox x:Name="tbDateServ"
-                 TextChanged="tbDateServ_TextChanged"
-                 Grid.Row="1"
-                 Grid.Column="1"
-                 Width="250"
-                 Height="50"
-                 HorizontalAlignment="Left"
-                 MaxLength="20"/>
-
-        <TextBlock Text="Выберите время:"
+        <TextBlock Text="Выберите услугу:"
                    FontSize="25"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
                    Grid.Row="2"
                    Foreground="White"
-                   Margin="20 0"/>
+                   Margin="20 0"
+                   />
 
-        <TextBox x:Name="tbTimeServ"
-                 TextChanged="tbTimeServ_TextChanged"
-                 Grid.Row="2"
-                 Grid.Column="1"
-                 Width="250"
-                 Height="50"
-                 HorizontalAlignment="Left"
-                 MaxLength="20"/>
+        <TextBlock Text="Выберите клиента:"
+                   FontSize="25"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Grid.Row="1"
+                   Foreground="White"
+                   Margin="20 0"
+                   />
 
-        <TextBlock Text="Выберите услугу:"
+        <TextBlock Text="Выберите работника:"
                    FontSize="25"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
@@ -76,12 +59,30 @@
                    Margin="20 0"
                    />
 
-        <ComboBox x:Name="cbServicec"
-                 SelectionChanged="cbServicec_SelectionChanged"
+        <ComboBox x:Name="cbClients"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Width="290"
+                 Height="50"
+                 FontSize="22"
+                 HorizontalAlignment="Left"
+                />
+
+        <ComboBox x:Name="cbWorker"
                  Grid.Row="3"
                  Grid.Column="1"
-                 Width="250"
+                 Width="290"
                  Height="50"
+                 FontSize="22"
+                 HorizontalAlignment="Left"
+                />
+
+        <ComboBox x:Name="cbServices"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Width="290"
+                 Height="50"
+                 FontSize="22"
                  HorizontalAlignment="Left"
                 />
 
@@ -93,8 +94,9 @@
                 Height="40"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-                Margin="-30 0"
-                Click="btnAddServ_Click"/>
+                Margin="30 0"
+                Click="btnAddServ_Click"
+                />
 
         <Button x:Name="btnBackServ"
                 Content="Назад"
@@ -105,19 +107,8 @@
                 Height="40"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Margin="50 20 20 20" 
+                Margin="30 20 20 20" 
                 Click="btnBackServ_Click"/>
-
-        <Button
-            Click="btnAllRecording_Click"
-            Content="Список всех записей"
-            x:Name="btnAllRecording"
-            Width="150"
-            Height="40"
-            Grid.Row="8"
-            Margin="-70 10 10 10"
-            FontSize="15"
-            />
 
 
     </Grid>

@@ -24,7 +24,7 @@
 
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Название услуги" Width="*" Binding="{Binding NameService}"/>
-                <DataGridTextColumn Header="Тип услуги" Width="*" Binding="{Binding TypeService.NameTypeService}"/>
+                <DataGridTextColumn Header="Цена услуги" Width="*" Binding="{Binding Cost}"/>
             </DataGrid.Columns>
         </DataGrid>
 

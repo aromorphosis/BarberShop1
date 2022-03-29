@@ -5,21 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1d75494e634a467b9f9dd1b04d26b6e6" Name="Diagram1" ZoomLevel="73">
-        <EntityTypeShape EntityType="BarberShopModel.Client" Width="1.5" PointX="5.25" PointY="5" />
-        <EntityTypeShape EntityType="BarberShopModel.ClientRecording" Width="1.5" PointX="7.5" PointY="1.25" />
+        <EntityTypeShape EntityType="BarberShopModel.Client" Width="1.5" PointX="3" PointY="5.25" />
         <EntityTypeShape EntityType="BarberShopModel.Post" Width="1.5" PointX="0.75" PointY="1.375" />
         <EntityTypeShape EntityType="BarberShopModel.Recording" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="BarberShopModel.Service" Width="1.5" PointX="3" PointY="8.25" />
-        <EntityTypeShape EntityType="BarberShopModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" />
-        <EntityTypeShape EntityType="BarberShopModel.TypeService" Width="1.5" PointX="0.75" PointY="8.375" />
-        <EntityTypeShape EntityType="BarberShopModel.Worker" Width="1.5" PointX="0.75" PointY="5" />
-        <EntityTypeShape EntityType="BarberShopModel.WorkerPost" Width="1.5" PointX="3" PointY="1.25" />
-        <AssociationConnector Association="BarberShopModel.FK_ClientRecording_Client" />
-        <AssociationConnector Association="BarberShopModel.FK_ClientRecording_Recording" />
+        <EntityTypeShape EntityType="BarberShopModel.Service" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="BarberShopModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BarberShopModel.Worker" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="BarberShopModel.WorkerPost" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="BarberShopModel.FK_Recording_Client" />
         <AssociationConnector Association="BarberShopModel.FK_WorkerPost_Post" />
         <AssociationConnector Association="BarberShopModel.FK_Recording_Service" />
         <AssociationConnector Association="BarberShopModel.FK_Recording_WorkerPost" />
-        <AssociationConnector Association="BarberShopModel.FK_Service_TypeService" />
         <AssociationConnector Association="BarberShopModel.FK_WorkerPost_Worker" />
       </Diagram>
     </edmx:Diagrams>

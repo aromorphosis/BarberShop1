@@ -43,6 +43,7 @@ namespace BarberShop1
                 MessageBox.Show("Проверьте правильность введенных данных");
             }
 
+
         }
 
         private void Close1_Click(object sender, RoutedEventArgs e)

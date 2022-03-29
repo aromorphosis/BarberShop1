@@ -17,7 +17,7 @@ namespace BarberShop1.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
-            this.ClientRecording = new HashSet<ClientRecording>();
+            this.Recording = new HashSet<Recording>();
         }
     
         public int IdClient { get; set; }
@@ -28,6 +28,6 @@ namespace BarberShop1.EF
         public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientRecording> ClientRecording { get; set; }
+        public virtual ICollection<Recording> Recording { get; set; }
     }
 }

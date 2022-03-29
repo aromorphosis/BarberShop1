@@ -70,5 +70,13 @@ namespace BarberShop1
             servicesAdd.ShowDialog();
             this.Close();
         }
+
+        private void Zarplata_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            Zarplata zarplata = new Zarplata();
+            zarplata.ShowDialog();
+            this.Close();
+        }
     }
 }

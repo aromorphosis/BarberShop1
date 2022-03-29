@@ -15,7 +15,6 @@
 
         <Image Source="/Images/dwayne_johnson.jpg" Stretch="Fill" Grid.RowSpan="3"/>
 
-     
 
         <Button
         x:Name="Back"
@@ -58,8 +57,8 @@
                         BorderBrush="#FFA28A60"
                         BorderThickness="2"
                         CornerRadius="10"
-                        Width="800"
-                        Height="100"
+                        Width="700"
+                        Height="150"
                         Margin="10">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -84,7 +83,7 @@
                                 <Image.Source>
                                     <Binding Path="PhotoWorker">
                                         <Binding.TargetNullValue>
-                                            <ImageSource>/BarberShop1;component/Images/dwayne_johnson.jpg</ImageSource>
+                                            <ImageSource>/BarberShop1;component/Images/kisspng-computer-icons-user-clip-art-portable-network-grap-rse-ampquotetc-cec-rkampquot-5bed73aa1f3005.4247395715422882981278.jpg</ImageSource>
                                         </Binding.TargetNullValue>
                                     </Binding>
                                 </Image.Source>
@@ -96,7 +95,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Right"
                                         Margin="0 0 10 0"
-                                        FontSize="20"
+                                        FontSize="15"
                                         Foreground="#FFA28A60"/>
 
                             <TextBlock Text="Имя:"
@@ -105,7 +104,7 @@
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
                                        Margin="0 0 10 0"
-                                       FontSize="20"
+                                       FontSize="15"
                                        Foreground="#FFA28A60"/>
 
                             <TextBlock Text="Телефон:"
@@ -114,7 +113,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Right"
                                         Margin="0 0 10 0"
-                                        FontSize="20"
+                                        FontSize="15"
                                         Foreground="#FFA28A60"/>
 
 
@@ -124,7 +123,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                         Margin="0 0 10 0"
-                                        FontSize="20"
+                                        FontSize="15"
                                         Foreground="#FFA28A60"/>
 
                             <TextBlock Text="{Binding Path = FName}"
@@ -133,7 +132,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                         Margin="0 0 10 0"
-                                        FontSize="20"
+                                        FontSize="15"
                                         Foreground="#FFA28A60"/>
 
                             <TextBlock Text="{Binding Path = Phone}"
@@ -142,7 +141,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                         Margin="0 0 10 0"
-                                        FontSize="20"
+                                        FontSize="15"
                                         Foreground="#FFA28A60"/>
 
                             <TextBlock Text="Логин:"
@@ -151,7 +150,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Right"
                                         Margin="0 0 10 0"
-                                        FontSize="20"
+                                        FontSize="15"
                                         Foreground="#FFA28A60"/>
 
                             <TextBlock Text="Пароль:"
@@ -160,7 +159,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Right"
                                         Margin="0 0 10 0"
-                                        FontSize="20"
+                                        FontSize="15"
                                         Foreground="#FFA28A60"/>
 
                             <TextBlock Text="{Binding Path = Login}"
@@ -169,7 +168,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                         Margin="0 0 10 0"
-                                        FontSize="20"
+                                        FontSize="15"
                                         Foreground="#FFA28A60"/>
 
                             <TextBlock Text="{Binding Path = Password}"
@@ -178,7 +177,7 @@
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Left"
                                         Margin="0 0 10 0"
-                                        FontSize="20"
+                                        FontSize="15"
                                         Foreground="#FFA28A60"/>
                         </Grid>
                     </Border>

@@ -118,9 +118,9 @@ namespace BarberShop1
                 if (resClick == MessageBoxResult.Yes)
                 {
                     EF.Worker worker = new EF.Worker();
-                    if (!(AllPersonalTwo.SelectedItem is EF.Worker))
+                    if (!(AllPersonalTwo.SelectedItem is EF.Worker)) 
                     {
-                        MessageBox.Show("Запись не выбраны");
+                        MessageBox.Show("Запись не выбрана");
                         return;
                     }
                     worker = AllPersonalTwo.SelectedItem as EF.Worker;
