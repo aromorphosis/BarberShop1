@@ -93,9 +93,9 @@ namespace BarberShop1
         private void AddBtnSer_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            ServicecAdd servicecAdd = new ServicecAdd();
-            servicecAdd.ShowDialog();
-            Filter();
+            AllRecordings allRecordings = new AllRecordings();
+            allRecordings.ShowDialog();
+            this.Close();
         }
     }
 }

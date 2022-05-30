@@ -41,7 +41,7 @@ namespace BarberShop1
                 var User = (AllPersonalTwo.SelectedItem as EF.Worker);
 
                 var listServices = context.Recording.ToList().Where(i => i.IdWorker == User.IdWorker).Select(i => i.IdService).ToList();
-
+                 
                 double summ = 0;
 
                 foreach (var item in listServices)
@@ -55,5 +55,6 @@ namespace BarberShop1
                 ZarpltaTB.Text = res.ToString();
             }
         }
+
     }
 }

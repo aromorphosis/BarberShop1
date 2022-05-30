@@ -15,6 +15,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhotoClient" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -93,11 +94,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Recording_WorkerPost">
-          <End Role="WorkerPost" Type="Self.WorkerPost" Multiplicity="0..1" />
+        <Association Name="FK_Recording_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="Recording" Type="Self.Recording" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WorkerPost">
+            <Principal Role="Worker">
               <PropertyRef Name="IdWorker" />
             </Principal>
             <Dependent Role="Recording">
@@ -176,8 +177,8 @@
             <End Role="Service" EntitySet="Service" />
             <End Role="Recording" EntitySet="Recording" />
           </AssociationSet>
-          <AssociationSet Name="FK_Recording_WorkerPost" Association="Self.FK_Recording_WorkerPost">
-            <End Role="WorkerPost" EntitySet="WorkerPost" />
+          <AssociationSet Name="FK_Recording_Worker" Association="Self.FK_Recording_Worker">
+            <End Role="Worker" EntitySet="Worker" />
             <End Role="Recording" EntitySet="Recording" />
           </AssociationSet>
           <AssociationSet Name="FK_WorkerPost_Post" Association="Self.FK_WorkerPost_Post">
@@ -230,26 +231,21 @@
           <EntitySet Name="Service" EntityType="BarberShopModel.Service" />
           <EntitySet Name="sysdiagrams" EntityType="BarberShopModel.sysdiagrams" />
           <EntitySet Name="Worker" EntityType="BarberShopModel.Worker" />
-          <EntitySet Name="WorkerPost" EntityType="BarberShopModel.WorkerPost" />
           <AssociationSet Name="FK_Recording_Client" Association="BarberShopModel.FK_Recording_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="Recording" EntitySet="Recording" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WorkerPost_Post" Association="BarberShopModel.FK_WorkerPost_Post">
-            <End Role="Post" EntitySet="Post" />
-            <End Role="WorkerPost" EntitySet="WorkerPost" />
           </AssociationSet>
           <AssociationSet Name="FK_Recording_Service" Association="BarberShopModel.FK_Recording_Service">
             <End Role="Service" EntitySet="Service" />
             <End Role="Recording" EntitySet="Recording" />
           </AssociationSet>
-          <AssociationSet Name="FK_Recording_WorkerPost" Association="BarberShopModel.FK_Recording_WorkerPost">
-            <End Role="WorkerPost" EntitySet="WorkerPost" />
+          <AssociationSet Name="FK_Recording_Worker" Association="BarberShopModel.FK_Recording_Worker">
+            <End Role="Worker" EntitySet="Worker" />
             <End Role="Recording" EntitySet="Recording" />
           </AssociationSet>
-          <AssociationSet Name="FK_WorkerPost_Worker" Association="BarberShopModel.FK_WorkerPost_Worker">
+          <AssociationSet Name="WorkerPost" Association="BarberShopModel.WorkerPost">
+            <End Role="Post" EntitySet="Post" />
             <End Role="Worker" EntitySet="Worker" />
-            <End Role="WorkerPost" EntitySet="WorkerPost" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -273,6 +269,7 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoClient" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Recording" Relationship="BarberShopModel.FK_Recording_Client" FromRole="Client" ToRole="Recording" />
         </EntityType>
         <EntityType Name="Post">
@@ -281,7 +278,7 @@
           </Key>
           <Property Name="IdPost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NamePost" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="WorkerPost" Relationship="BarberShopModel.FK_WorkerPost_Post" FromRole="Post" ToRole="WorkerPost" />
+          <NavigationProperty Name="Worker" Relationship="BarberShopModel.WorkerPost" FromRole="Post" ToRole="Worker" />
         </EntityType>
         <EntityType Name="Recording">
           <Key>
@@ -293,7 +290,7 @@
           <Property Name="IdWorker" Type="Int32" />
           <NavigationProperty Name="Client" Relationship="BarberShopModel.FK_Recording_Client" FromRole="Recording" ToRole="Client" />
           <NavigationProperty Name="Service" Relationship="BarberShopModel.FK_Recording_Service" FromRole="Recording" ToRole="Service" />
-          <NavigationProperty Name="WorkerPost" Relationship="BarberShopModel.FK_Recording_WorkerPost" FromRole="Recording" ToRole="WorkerPost" />
+          <NavigationProperty Name="Worker" Relationship="BarberShopModel.FK_Recording_Worker" FromRole="Recording" ToRole="Worker" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -325,17 +322,8 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PhotoWorker" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="WorkerPost" Relationship="BarberShopModel.FK_WorkerPost_Worker" FromRole="Worker" ToRole="WorkerPost" />
-        </EntityType>
-        <EntityType Name="WorkerPost">
-          <Key>
-            <PropertyRef Name="IdWorker" />
-          </Key>
-          <Property Name="IdWorker" Type="Int32" Nullable="false" />
-          <Property Name="IdPost" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Post" Relationship="BarberShopModel.FK_WorkerPost_Post" FromRole="WorkerPost" ToRole="Post" />
-          <NavigationProperty Name="Recording" Relationship="BarberShopModel.FK_Recording_WorkerPost" FromRole="WorkerPost" ToRole="Recording" />
-          <NavigationProperty Name="Worker" Relationship="BarberShopModel.FK_WorkerPost_Worker" FromRole="WorkerPost" ToRole="Worker" />
+          <NavigationProperty Name="Recording" Relationship="BarberShopModel.FK_Recording_Worker" FromRole="Worker" ToRole="Recording" />
+          <NavigationProperty Name="Post" Relationship="BarberShopModel.WorkerPost" FromRole="Worker" ToRole="Post" />
         </EntityType>
         <Association Name="FK_Recording_Client">
           <End Type="BarberShopModel.Client" Role="Client" Multiplicity="0..1" />
@@ -346,18 +334,6 @@
             </Principal>
             <Dependent Role="Recording">
               <PropertyRef Name="IdClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WorkerPost_Post">
-          <End Type="BarberShopModel.Post" Role="Post" Multiplicity="1" />
-          <End Type="BarberShopModel.WorkerPost" Role="WorkerPost" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="IdPost" />
-            </Principal>
-            <Dependent Role="WorkerPost">
-              <PropertyRef Name="IdPost" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -373,11 +349,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Recording_WorkerPost">
-          <End Type="BarberShopModel.WorkerPost" Role="WorkerPost" Multiplicity="0..1" />
+        <Association Name="FK_Recording_Worker">
+          <End Type="BarberShopModel.Worker" Role="Worker" Multiplicity="0..1" />
           <End Type="BarberShopModel.Recording" Role="Recording" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="WorkerPost">
+            <Principal Role="Worker">
               <PropertyRef Name="IdWorker" />
             </Principal>
             <Dependent Role="Recording">
@@ -385,17 +361,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WorkerPost_Worker">
-          <End Type="BarberShopModel.Worker" Role="Worker" Multiplicity="1" />
-          <End Type="BarberShopModel.WorkerPost" Role="WorkerPost" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Worker">
-              <PropertyRef Name="IdWorker" />
-            </Principal>
-            <Dependent Role="WorkerPost">
-              <PropertyRef Name="IdWorker" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="WorkerPost">
+          <End Type="BarberShopModel.Post" Role="Post" Multiplicity="0..1" />
+          <End Type="BarberShopModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -430,6 +398,7 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="BarberShopModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="PhotoClient" ColumnName="PhotoClient" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -490,14 +459,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WorkerPost">
-            <EntityTypeMapping TypeName="BarberShopModel.WorkerPost">
-              <MappingFragment StoreEntitySet="WorkerPost">
-                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
-                <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <AssociationSetMapping Name="WorkerPost" TypeName="BarberShopModel.WorkerPost" StoreEntitySet="WorkerPost">
+            <EndProperty Name="Worker">
+              <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
+            </EndProperty>
+            <EndProperty Name="Post">
+              <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+            </EndProperty>
+            <Condition ColumnName="IdPost" IsNull="false" />
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

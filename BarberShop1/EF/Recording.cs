@@ -18,9 +18,13 @@ namespace BarberShop1.EF
         public Nullable<int> IdClient { get; set; }
         public int IdService { get; set; }
         public Nullable<int> IdWorker { get; set; }
-    
+
+        public string CLIENT { get => $"{Client.FName}"; }
+        public string SERVICE { get => $"{Service.NameService}"; }
+        public string WORKER { get => $"{Worker.FName} {Worker.LName}"; }
+
         public virtual Client Client { get; set; }
         public virtual Service Service { get; set; }
-        public virtual WorkerPost WorkerPost { get; set; }
+        public virtual Worker Worker { get; set; }
     }
 }

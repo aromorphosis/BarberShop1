@@ -53,7 +53,7 @@ namespace BarberShop1
             if (resClick == MessageBoxResult.Yes)
             {
                 EF.Recording addRecording = new EF.Recording();
-                addRecording.IdClient  = cbClients.SelectedIndex + 1;
+                addRecording.IdClient  = ((EF.Client) cbClients.SelectedItem).IdClient;
                 addRecording.IdWorker = cbWorker.SelectedIndex + 1;
                 addRecording.IdService = cbServices.SelectedIndex + 1;
 

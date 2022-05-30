@@ -59,9 +59,9 @@
                                     Width="100"
                                     Height="100">
                                 <Image.Source>
-                                    <Binding Path="PhotoWorker">
+                                    <Binding Path="PhotoClient">
                                         <Binding.TargetNullValue>
-                                            <ImageSource>/BarberShop1;component/Images/kisspng-computer-icons-user-clip-art-portable-network-grap-rse-ampquotetc-cec-rkampquot-5bed73aa1f3005.4247395715422882981278.jpg</ImageSource>
+                                            <ImageSource>/BarberShop1;component/Images/1234.png</ImageSource>
                                         </Binding.TargetNullValue>
                                     </Binding>
                                 </Image.Source>

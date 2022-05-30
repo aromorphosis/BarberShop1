@@ -26,6 +26,7 @@ namespace BarberShop1.EF
         public string Email { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public byte[] PhotoClient { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recording> Recording { get; set; }

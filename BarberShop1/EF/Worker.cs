@@ -14,6 +14,12 @@ namespace BarberShop1.EF
     
     public partial class Worker
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Worker()
+        {
+            this.Recording = new HashSet<Recording>();
+        }
+    
         public int IdWorker { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
@@ -22,6 +28,8 @@ namespace BarberShop1.EF
         public string Password { get; set; }
         public byte[] PhotoWorker { get; set; }
     
-        public virtual WorkerPost WorkerPost { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Recording> Recording { get; set; }
+        public virtual Post Post { get; set; }
     }
 }
