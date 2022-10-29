@@ -229,5 +229,15 @@
         Click="AddBtnCL_Click"
         />
 
+        <Button
+        x:Name="EditClient"
+        Width="150"
+        Height="60"
+        Content="Изменить"
+        FontSize="30"
+        Margin="1400 -100 0 0"
+        Click="EditClient_Click"
+        />
+
     </Grid>
 </Window>

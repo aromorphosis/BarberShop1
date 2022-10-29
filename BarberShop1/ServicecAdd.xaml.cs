@@ -54,8 +54,8 @@ namespace BarberShop1
             {
                 EF.Recording addRecording = new EF.Recording();
                 addRecording.IdClient  = ((EF.Client) cbClients.SelectedItem).IdClient;
-                addRecording.IdWorker = cbWorker.SelectedIndex + 1;
-                addRecording.IdService = cbServices.SelectedIndex + 1;
+                addRecording.IdWorker = ((EF.Worker)cbWorker.SelectedItem).IdWorker;
+                addRecording.IdService = ((EF.Service)cbServices.SelectedItem).IdService;
 
                 ClassHelper.Class1.context.Recording.Add(addRecording);
                 ClassHelper.Class1.context.SaveChanges();

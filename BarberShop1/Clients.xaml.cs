@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BarberShop1.EF;
+using static BarberShop1.ClassHelper.Class1;
 
 namespace BarberShop1
 {
@@ -129,6 +131,15 @@ namespace BarberShop1
                 }
             }
             Filter();
+        }
+
+        private void EditClient_Click(object sender, RoutedEventArgs e)
+        {
+            Client clientedit = AllPersonalThree.SelectedItem as Client;
+
+            RefreshClient refreshClient = new RefreshClient(clientedit);
+            refreshClient.ShowDialog();
+
         }
     }
 }

@@ -40,7 +40,7 @@ namespace BarberShop1
 
         private void Filter()
         {
-            ListService = ClassHelper.Class1.context.Service.ToList();
+            ListService = context.Service.ToList();
             ListService = ListService.Where(i => i.NameService.Contains(SearchTBSer.Text)
             || i.Cost == Convert.ToDecimal(SearchTBSer.Text)).ToList();
 

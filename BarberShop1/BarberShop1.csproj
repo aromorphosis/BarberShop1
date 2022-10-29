@@ -134,6 +134,9 @@
     <Compile Include="PersonalWindow.xaml.cs">
       <DependentUpon>PersonalWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RefreshClient.xaml.cs">
+      <DependentUpon>RefreshClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ServicecAdd.xaml.cs">
       <DependentUpon>ServicecAdd.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PersonalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RefreshClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

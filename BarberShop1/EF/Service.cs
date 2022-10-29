@@ -19,7 +19,7 @@ namespace BarberShop1.EF
         {
             this.Recording = new HashSet<Recording>();
         }
-    
+
         public int IdService { get; set; }
         public string NameService { get; set; }
         public Nullable<decimal> Cost { get; set; }
